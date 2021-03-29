@@ -16,7 +16,7 @@ ________________________________________________________________________________
 
 namespace CoreAGI {
 
-  std::mt19937 randomNumber{ size_t( Timer()( Timer::MICROSEC ) ) }; // :random number generator
+  std::mt19937 randomNumber{ unsigned( Timer()( Timer::MICROSEC ) ) }; // :random number generator
 
 }
 

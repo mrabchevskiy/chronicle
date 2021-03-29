@@ -46,7 +46,7 @@ namespace CoreAGI {
       return "?";
     }
 
-    static constexpr double UNIT[4] = { [ NANOSEC ]=1.0, [ MICROSEC ]=1.0e-3, [ MILLISEC ]=1.0e-6, [ SEC ]=1.0e-9 };
+    static constexpr double UNIT[4] = { 1.0, 1.0e-3, 1.0e-6, 1.0e-9 };
 
     Timer(): to{ Clock::now() }, tt{ to }{ }
 

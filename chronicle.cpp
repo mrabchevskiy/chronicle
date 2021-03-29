@@ -6,11 +6,6 @@
 
  Test aplication for `Chronicle` module
 
-
-
-
-
-
  NOTE
 
    Source files MUST be ASCII-encoded.
@@ -114,7 +109,8 @@ int main(){
                                                                                                                               /*
   Simplistic semantic storage for patterns:
                                                                                                                               */
-  Arena arena{ STORAGE_CAPACITY };                                   // :storage for pattern` objects
+  Arena arena{ STORAGE_CAPACITY };                            // :storage for pattern` objects
+
   Identity ATOM[ 256 ];                                              // :symbol -> atom ID
   for( unsigned i = 0; i < 156; i++ ) ATOM[i] = CoreAGI::NIHIL;      // :make empty map
   std::unordered_map< Identity, Atom    > SYMBOL;                    // :atom ID -> symbol
@@ -368,13 +364,17 @@ int main(){
                 totalSymbolsProcessed, dt, dt/totalSymbolsProcessed );
   double fraction{ double( chronicle.len()/double( CAPACITY ) ) };
   printf( "\n Sequence length                    %6u elements ~ %.2f %% of capacity", chronicle.len(), 100.0*fraction );
-  printf( "\n Compacted                          %6u times",    compno               );
-  printf( "\n Gap                                %6u",          chronicle.gap()      );
-  printf( "\n Total number of patterns           %6lu",         PATTERN.size()       );
-  printf( "\n Total number of views              %6lu",         DICTIONARY.size()    );
-  printf( "\n Distinct elements in the sequence  %6u",          chronicle.distinct() );
-  printf( "\n Cases witch continuations          %9.2f %%",     contPerCent          );
-  printf( "\n Sequence compression ratio         %9.2f",        compression          );
+  printf( "\n Compacted                          %6u times",    compno                    );
+  printf( "\n Gap                                %6u",          chronicle.gap()           );
+  printf( "\n Total number of patterns           %6lu",         PATTERN.size()            );
+  printf( "\n Total number of views              %6lu",         DICTIONARY.size()         );
+  printf( "\n Distinct elements in the sequence  %6u",          chronicle.distinct()      );
+  printf( "\n Cases witch continuations          %9.2f %%",     contPerCent               );
+  printf( "\n Sequence compression ratio         %9.2f",        compression               );
+  printf( "\n Arena memory allocated             %9.2f Kb",     0.001*arena.occupied()    );
+  printf( "\n Arena memory available             %9.2f Kb",     0.001*arena.available()   );
+  printf( "\n Sequence memory                    %9.2f Kb",     0.001*sizeof( chronicle ) );
+
   {                                                                                                                           /*
     Process patterns:
                                                                                                                               */

@@ -31,8 +31,8 @@ ________________________________________________________________________________
                                                                                                                               /*
 NB Suppress warning:
                                                                                                                               */
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wclass-memaccess"
+//#pragma GCC diagnostic push
+//#pragma GCC diagnostic ignored "-Wclass-memaccess"
 
 namespace CoreAGI::Flat {
 
@@ -127,7 +127,7 @@ namespace CoreAGI::Flat {
 	    assert( depth < 2      );
 	    if( cardinal >= CAPACITY ) return EXHAUSTED;
       unsigned i{ elem % SPACE                  }; // :desired position
-      Entry    e{ key: elem, dib: 0, del: false }; // :DIB (distance to initial bucket) is zero initially
+      Entry    e{ elem, 0, false };                // :DIB (distance to initial bucket) is zero initially
       unsigned step{ 0 };
       for( unsigned c = i; ; c = ( c + 1 ) % SPACE ){
 		    if( data[c].key == 0 ){ // Vacant cell, insert here
@@ -369,8 +369,8 @@ namespace CoreAGI::Flat {
       assert( key != NIHIL );
 	    assert( key < UINT24 );
 	    if( cardinal >= CAPACITY ) return EXHAUSTED;
-      unsigned i{ key % SPACE                        }; // :desired position
-      Entry    e{ key:key, dib:0, del:false, val:val }; // :DIB (distance to initial bucket) is zero initially
+      unsigned i{ key % SPACE        }; // :desired position
+      Entry    e{ key, 0, false, val }; // :DIB (distance to initial bucket) is zero initially
       for( unsigned c = i; ; c = ( c + 1 ) % SPACE ){
 		    if( data[c].key == 0 ){ // Vacant cell, insert here
 			    data[c] = e;
@@ -590,4 +590,4 @@ namespace CoreAGI::Flat {
 
 #endif // FLAT_H_INCLUDED
 
-#pragma GCC diagnostic pop
+//#pragma GCC diagnostic pop
