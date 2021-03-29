@@ -1,0 +1,9 @@
+obj/*
+*.txt
+*.log
+*.layout
+*.depend
+*.o
+*.cbp
+valgrind.*
+
